@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="format-detection" content="telephone=no">
+
+<!-- ===== SEO (config.js에서 동적 보강) ===== -->
+<title>용인 기흥 라온프라이빗 아르디에 | 공식 관심고객등록</title>
+<meta name="description" content="용인 기흥 라온프라이빗 아르디에 공식 홍보 페이지. 경기도 용인시 기흥구 영덕동 55-1번지 일원, 84㎡~119㎡ 총 238세대. 사업개요·입지환경·프리미엄·단지배치도·단지설계·커뮤니티·시스템·평면도·인테리어 확인 및 관심고객등록.">
+<meta name="keywords" content="용인 기흥 라온프라이빗 아르디에, 라온프라이빗 아르디에, 용인 아파트 분양, 기흥 아파트 분양, 영덕동 아파트, 용인 플랫폼시티, 구성역 GTX-A, 라온건설">
+<meta name="author" content="라온건설">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="" id="seo-canonical">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="용인 기흥 라온프라이빗 아르디에">
+<meta property="og:title" content="용인 기흥 라온프라이빗 아르디에 | 공식 관심고객등록" id="og-title">
+<meta property="og:description" content="용인 플랫폼시티 인근 영덕동, 84㎡~119㎡ 총 238세대 테라스 특화 단지. 관심고객등록 시 최신 분양정보 우선 안내." id="og-desc">
+<meta property="og:image" content="assets/images/hero.jpg" id="og-image">
+<meta property="og:locale" content="ko_KR">
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="용인 기흥 라온프라이빗 아르디에" id="tw-title">
+<meta name="twitter:description" content="테라스 라이프를 즐기는 품격 있는 주거단지. 관심고객등록 우선 안내." id="tw-desc">
+<meta name="twitter:image" content="assets/images/hero.jpg" id="tw-image">
+
+<meta name="theme-color" content="#1B2A4A">
+<link rel="icon" href="assets/images/logo_w.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+<!-- JSON-LD 구조화 데이터 -->
+<script type="application/ld+json" id="ld-json"></script>
+
+<style>
+/* ===== DESIGN TOKENS ===== */
+:root{
+  --navy:      #1B2A4A;
+  --navy-d:    #111C33;
+  --navy-l:    #2C4270;
+  --gold:      #C0A062;
+  --gold-l:    #D8BE86;
+  --gold-d:    #9A7E45;
+  --cream:     #F5F1E8;
+  --gray:      #F4F5F7;
+  --line:      #E6E3DA;
+  --dark:      #1A1A1A;
+  --text:      #333;
+  --text-s:    #666;
+  --text-xs:   #9A9A9A;
+  --radius:    6px;
+  --tr:        .3s cubic-bezier(.4,0,.2,1);
+  --maxw:      680px; /* 모바일 우선 컨텐츠 폭 */
+  --hh:        58px;  /* 고정 헤더 높이 — JS가 실측값으로 갱신 */
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+/* scroll-behavior는 JS가 직접 제어합니다(앵커 위치 보정) */
+html{-webkit-text-size-adjust:100%;overflow-x:hidden;width:100%}
+body{font-family:'Noto Sans KR',sans-serif;color:var(--text);background:#fff;overflow-x:hidden;width:100%;line-height:1.6}
+/* width/height 속성으로 미리 자리를 예약 → 이미지 로딩 중 레이아웃이 밀리지 않음 */
+img{max-width:100%;height:auto;display:block}
+/* 고정 헤더 높이만큼 앵커 오프셋 */
+section[id]{scroll-margin-top:calc(var(--hh) + 8px)}
+a{text-decoration:none;color:inherit}
+button{cursor:pointer;border:none;background:none;font-family:inherit}
+ul,ol{list-style:none}
+
+/* ── Loading ── */
+#page-loading{position:fixed;inset:0;background:var(--navy);z-index:9999;display:flex;align-items:center;justify-content:center;transition:opacity .4s}
+#page-loading.hide{opacity:0;pointer-events:none}
+.loading-dot{width:9px;height:9px;background:var(--gold);border-radius:50%;margin:0 4px;animation:ldot 1s infinite alternate}
+.loading-dot:nth-child(2){animation-delay:.2s}
+.loading-dot:nth-child(3){animation-delay:.4s}
+@keyframes ldot{from{opacity:.25;transform:scale(.8)}to{opacity:1;transform:scale(1.2)}}
+
+/* ── Header ── */
+.header{position:fixed;top:0;left:0;right:0;z-index:900;background:rgba(27,42,74,.96);backdrop-filter:blur(10px);transition:var(--tr);border-bottom:1px solid rgba(255,255,255,.08)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;height:58px;padding:0 18px;max-width:1160px;margin:0 auto}
+.logo{display:flex;align-items:center;gap:9px}
+.logo-txt{display:flex;flex-direction:column;line-height:1.15}
+.logo-ko{font-size:15px;font-weight:900;letter-spacing:.5px;color:#fff}
+.logo-en{font-size:9px;letter-spacing:2px;color:var(--gold-l);font-weight:500}
+.gnav{display:none;gap:16px;align-items:center}
+.gnav a{font-size:12.5px;font-weight:500;color:rgba(255,255,255,.8);letter-spacing:.2px;position:relative;padding-bottom:3px;white-space:nowrap}
+.gnav a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1.5px;background:var(--gold);transition:width .25s}
+.gnav a:hover{color:#fff}.gnav a:hover::after{width:100%}
+.gnav-cta{background:var(--gold);color:var(--navy)!important;padding:8px 14px;border-radius:var(--radius);font-weight:700!important}
+.gnav-cta::after{display:none!important}
+.mobile-menu-btn{display:flex;flex-direction:column;gap:5px;padding:6px}
+.mobile-menu-btn span{width:22px;height:2px;background:#fff;border-radius:2px;transition:var(--tr)}
+
+/* ── Mobile Nav ── */
+.mobile-nav{position:fixed;top:0;right:-100%;width:280px;max-width:82vw;height:100dvh;background:var(--navy);z-index:910;padding:72px 26px 40px;box-shadow:-4px 0 30px rgba(0,0,0,.4);transition:right .35s ease;overflow-y:auto}
+.mobile-nav.open{right:0}
+.mobile-nav-close{position:absolute;top:18px;right:18px;font-size:24px;color:rgba(255,255,255,.7)}
+.mobile-nav a{display:block;padding:15px 0;font-size:15px;font-weight:500;color:rgba(255,255,255,.85);border-bottom:1px solid rgba(255,255,255,.08)}
+.mobile-nav a.cta{margin-top:16px;background:var(--gold);color:var(--navy);text-align:center;padding:14px;border-radius:var(--radius);font-weight:700;border:none}
+.nav-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:905;opacity:0;pointer-events:none;transition:opacity .3s}
+.nav-overlay.show{opacity:1;pointer-events:auto}
+
+/* ── Hero ── */
+.hero{position:relative;min-height:88vh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:var(--navy);padding-top:58px}
+.hero-bg{position:absolute;inset:0;background-size:cover;background-position:center 65%;opacity:.8;animation:heroZoom 16s ease-in-out infinite alternate}
+@keyframes heroZoom{from{transform:scale(1.08)}to{transform:scale(1)}}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(17,28,51,.55) 0%,rgba(17,28,51,.25) 45%,rgba(17,28,51,.85) 100%)}
+.hero-content{position:relative;z-index:2;text-align:center;padding:0 22px;color:#fff}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(192,160,98,.16);border:1px solid rgba(216,190,134,.5);border-radius:30px;padding:8px 20px;font-size:12px;letter-spacing:1px;color:var(--gold-l);font-weight:600;margin-bottom:26px;opacity:0;animation:fadeUp .8s .2s forwards}
+.hero-badge-dot{width:6px;height:6px;background:var(--gold);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.hero-eyebrow{display:block;font-size:11px;letter-spacing:6px;color:rgba(255,255,255,.6);margin-bottom:16px;opacity:0;animation:fadeUp .8s .4s forwards}
+.hero-title{font-size:clamp(30px,9vw,52px);font-weight:900;line-height:1.2;letter-spacing:-1px;margin-bottom:14px;opacity:0;animation:fadeUp .8s .6s forwards}
+.hero-title b{color:var(--gold-l)}
+.hero-sub{font-size:clamp(13px,3.6vw,17px);color:rgba(255,255,255,.75);letter-spacing:.5px;line-height:1.7;margin-bottom:20px;opacity:0;animation:fadeUp .8s .8s forwards}
+.hero-info{font-size:12px;color:rgba(255,255,255,.55);letter-spacing:.5px;margin-bottom:34px;opacity:0;animation:fadeUp .8s .9s forwards}
+.hero-info b{color:#fff}
+.hero-cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;opacity:0;animation:fadeUp .8s 1s forwards}
+.hero-btn{padding:14px 30px;border-radius:var(--radius);font-size:14px;font-weight:700;letter-spacing:.5px;transition:all var(--tr)}
+.hero-btn-primary{background:var(--gold);color:var(--navy);border:2px solid var(--gold)}
+.hero-btn-primary:active{transform:translateY(1px)}
+.hero-btn-outline{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.45)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+.hero-scroll{position:absolute;bottom:24px;left:0;right:0;display:flex;flex-direction:column;align-items:center;gap:8px;z-index:2;opacity:0;animation:fadeUp .8s 1.4s forwards}
+.hero-scroll-line{width:1px;height:44px;background:linear-gradient(to bottom,rgba(255,255,255,.6),transparent);animation:scrollAnim 2.4s ease-in-out infinite}
+@keyframes scrollAnim{0%{transform:scaleY(0);transform-origin:top}49%{transform:scaleY(1);transform-origin:top}50%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+.hero-scroll-txt{font-size:9px;letter-spacing:3px;color:rgba(255,255,255,.4)}
+
+/* ── Notice bar ── */
+.notice-bar{background:var(--navy-d);color:#fff;padding:14px 20px;text-align:center;font-size:13px;letter-spacing:.3px;line-height:1.9}
+.notice-bar strong{color:var(--gold-l);font-weight:700}
+
+/* ── Section base ── */
+.sec{padding:60px 0}
+.container{max-width:var(--maxw);margin:0 auto;padding:0 18px}
+.sec-head{text-align:center;margin-bottom:34px}
+.sec-eyebrow{display:inline-block;font-size:11px;letter-spacing:4px;color:var(--gold-d);font-weight:700;margin-bottom:10px}
+.sec-title{font-size:clamp(24px,6.5vw,34px);font-weight:900;color:var(--navy);line-height:1.3;position:relative;display:inline-block;padding-bottom:14px}
+.sec-title::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:44px;height:3px;background:var(--gold)}
+.sec-desc{font-size:14px;color:var(--text-s);line-height:1.9;margin-top:16px;padding:0 6px}
+.sec-tit-img{max-width:440px;margin:0 auto 20px;border-radius:var(--radius)}
+.sec-img{width:100%;border-radius:var(--radius);margin-top:16px;box-shadow:0 10px 30px rgba(27,42,74,.12)}
+.sec.alt{background:var(--gray)}
+.sec.dark{background:var(--navy)}
+.sec.dark .sec-title{color:#fff}
+.sec.dark .sec-title::after{background:var(--gold)}
+.sec.dark .sec-desc{color:rgba(255,255,255,.65)}
+.sec.dark .sec-eyebrow{color:var(--gold-l)}
+
+/* ── Plan tabs (1단/2단 공용) ── */
+.plan-tabs{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-bottom:16px}
+.plan-tabs.sub{margin-bottom:18px}
+.plan-tab{padding:9px 16px;font-size:13px;font-weight:700;color:var(--text-s);background:#fff;border:1.5px solid var(--line);border-radius:22px;transition:all var(--tr)}
+.plan-tab.active{color:#fff;background:var(--navy);border-color:var(--navy)}
+.plan-tab.sub-tab{padding:7px 13px;font-size:12px;border-radius:18px}
+.plan-tab.sub-tab.active{background:var(--gold-d);border-color:var(--gold-d);color:#fff}
+.plan-panel{display:none}
+.plan-panel.active{display:block;animation:fadeUp .5s ease}
+.plan-block{display:inline-block;margin-top:12px;font-size:12px;font-weight:700;color:var(--navy);background:var(--cream);border:1px solid var(--line);border-radius:16px;padding:5px 14px}
+
+/* ── Tables ── */
+.info-table{width:100%;border-collapse:collapse;margin-top:22px;background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:0 6px 20px rgba(27,42,74,.08)}
+.info-table tr{border-bottom:1px solid var(--line)}
+.info-table tr:last-child{border-bottom:none}
+.info-table th{padding:14px 12px;font-size:12px;font-weight:700;color:var(--navy);background:var(--cream);width:104px;text-align:left;vertical-align:middle;white-space:nowrap}
+.info-table td{padding:14px 14px;font-size:13px;color:var(--text);line-height:1.7}
+.info-table td strong{color:var(--gold-d)}
+
+.block-table-wrap{margin-top:28px}
+.block-table-title{font-size:14px;font-weight:900;color:var(--navy);margin-bottom:10px}
+.block-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--radius);box-shadow:0 6px 20px rgba(27,42,74,.08);background:#fff}
+.block-table{width:100%;min-width:620px;border-collapse:collapse}
+.block-table th,.block-table td{padding:11px 12px;font-size:12px;text-align:center;border-bottom:1px solid var(--line);white-space:nowrap}
+.block-table thead th{background:var(--navy);color:#fff;font-weight:700}
+.block-table tbody th{background:var(--cream);color:var(--navy);font-weight:700}
+.block-table tbody tr:last-child th,.block-table tbody tr:last-child td{border-bottom:none}
+.block-note{font-size:11px;color:var(--text-xs);margin-top:9px;line-height:1.7}
+
+/* ── Form ── */
+.form-section{background:var(--cream);padding:56px 0 64px}
+.form-box{background:#fff;border-radius:12px;padding:30px 22px;box-shadow:0 12px 40px rgba(27,42,74,.12);max-width:560px;margin:0 auto}
+.form-group{display:flex;flex-direction:column;gap:7px;margin-bottom:16px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.form-col{display:flex;flex-direction:column;gap:7px;min-width:0}
+@media (max-width:400px){.form-row{grid-template-columns:1fr}}
+.form-label{font-size:13px;font-weight:700;color:var(--navy)}
+.form-label span{color:#D0021B}
+.form-input,.form-select{width:100%;padding:14px 15px;border:1.5px solid var(--line);border-radius:var(--radius);font-family:inherit;font-size:15px;color:var(--text);background:#fff;transition:border-color var(--tr);outline:none}
+.form-input:focus,.form-select:focus{border-color:var(--gold)}
+.form-select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23999' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
+.form-date{appearance:none;-webkit-appearance:none;min-height:52px;line-height:1.4}
+.form-date::-webkit-calendar-picker-indicator{cursor:pointer;opacity:.55}
+.form-date::-webkit-date-and-time-value{text-align:left}
+.form-help{margin-top:7px;font-size:12.5px;color:var(--text-xs);line-height:1.5}
+
+/* ===== IMAGE POPUP ===== */
+.popup-overlay{position:fixed;inset:0;z-index:10000;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(10,16,28,.72);opacity:0;transition:opacity .3s}
+.popup-overlay.show{display:flex}
+.popup-overlay.visible{opacity:1}
+.popup-box{width:100%;max-width:380px;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 18px 50px rgba(0,0,0,.4);transform:translateY(14px);transition:transform .35s cubic-bezier(.4,0,.2,1)}
+.popup-overlay.visible .popup-box{transform:translateY(0)}
+.popup-img{display:block;width:100%;height:auto}
+.popup-close-x{position:absolute;top:14px;right:14px;width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.14);color:#fff;font-size:22px;line-height:42px;text-align:center}
+.popup-bar{display:flex;align-items:stretch;border-top:1px solid var(--line);background:#fff}
+.popup-bar label{flex:1;display:flex;align-items:center;gap:8px;padding:14px 16px;font-size:13.5px;color:var(--text-s);cursor:pointer}
+.popup-bar input{width:16px;height:16px;accent-color:var(--navy);cursor:pointer}
+.popup-bar button{padding:14px 22px;font-size:14px;font-weight:700;color:#fff;background:var(--navy);border-left:1px solid var(--line)}
+.privacy-wrap{margin:6px 0 20px}
+.privacy-row{display:flex;align-items:flex-start;gap:9px;cursor:pointer;user-select:none}
+.privacy-row input{width:18px;height:18px;flex-shrink:0;margin-top:1px;accent-color:var(--gold-d);cursor:pointer}
+.privacy-label{font-size:13px;color:var(--text);line-height:1.5}
+.privacy-label strong{color:#D0021B}
+.privacy-toggle{color:var(--gold-d);font-size:12px;font-weight:600;text-decoration:underline;margin-left:4px;white-space:nowrap}
+.privacy-box{display:none;margin-top:12px;padding:14px 16px;background:var(--gray);border:1px solid var(--line);border-radius:var(--radius);font-size:12px;color:var(--text-s);line-height:1.9}
+.privacy-box.open{display:block}
+.privacy-box table{width:100%;border-collapse:collapse;margin-top:8px}
+.privacy-box th,.privacy-box td{padding:6px 9px;border:1px solid var(--line);font-size:11px;text-align:left;vertical-align:top}
+.privacy-box th{background:#EFECE3;font-weight:700;color:var(--text);white-space:nowrap;width:88px}
+.privacy-error{display:none;font-size:12px;color:#D0021B;margin-top:7px;font-weight:600}
+.form-submit{width:100%;padding:16px;background:var(--navy);color:#fff;border-radius:var(--radius);font-size:16px;font-weight:700;letter-spacing:1px;transition:all var(--tr)}
+.form-submit:active{transform:translateY(1px)}
+.form-notice{text-align:center;margin-top:14px;font-size:11px;color:var(--text-xs);line-height:1.7}
+.form-success{display:none;text-align:center;padding:40px 20px;max-width:560px;margin:0 auto}
+.form-success-icon{font-size:52px;margin-bottom:14px}
+.form-success h3{font-size:21px;font-weight:900;color:var(--navy);margin-bottom:12px}
+.form-success p{font-size:14px;color:var(--text-s);line-height:1.8}
+
+/* ── Footer ── */
+.footer{background:var(--navy-d);color:rgba(255,255,255,.45);padding:40px 0 100px}
+.footer-inner{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+.footer-logo{font-size:15px;font-weight:900;letter-spacing:3px;color:#fff;margin-bottom:14px}
+.footer-info{font-size:12px;line-height:2;color:rgba(255,255,255,.55)}
+.footer-info b{color:rgba(255,255,255,.8)}
+.footer-disclaimer{font-size:10.5px;line-height:1.8;margin:20px 0;color:rgba(255,255,255,.3);border-top:1px solid rgba(255,255,255,.08);padding-top:18px}
+.footer-copy{font-size:11px;color:rgba(255,255,255,.35)}
+
+/* ── Fixed bottom CTA ── */
+.cta-bar{position:fixed;bottom:0;left:0;right:0;z-index:800;display:grid;grid-template-columns:1fr 1fr;height:calc(60px + env(safe-area-inset-bottom));box-shadow:0 -4px 20px rgba(0,0,0,.15)}
+.cta-btn{padding-bottom:env(safe-area-inset-bottom)}
+.cta-btn{display:flex;align-items:center;justify-content:center;gap:8px;font-size:15px;font-weight:700;letter-spacing:.3px}
+.cta-btn svg{width:19px;height:19px;fill:currentColor}
+.cta-register{background:var(--gold);color:var(--navy)}
+.cta-tel{background:var(--navy);color:#fff}
+
+/* ── Scroll fade ── */
+.fade-in{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.fade-in.visible{opacity:1;transform:none}
+
+/* ── Desktop up ── */
+@media(min-width:1100px){
+  .gnav{display:flex}
+  .mobile-menu-btn{display:none}
+  .cta-bar{display:none}
+  .footer{padding-bottom:40px}
+  :root{--maxw:920px}
+}
+</style>
+</head>
+<body>
+
+<div id="page-loading"><div class="loading-dot"></div><div class="loading-dot"></div><div class="loading-dot"></div></div>
+
+<!-- IMAGE POPUP -->
+<div class="popup-overlay" id="popupOverlay" role="dialog" aria-modal="true" aria-label="분양 안내 팝업">
+  <button type="button" class="popup-close-x" id="popupCloseX" aria-label="팝업 닫기">✕</button>
+  <div class="popup-box">
+    <a href="#register" id="popupLink"><img class="popup-img" id="popupImg" src="" alt=""></a>
+    <div class="popup-bar">
+      <label><input type="checkbox" id="popupToday"><span>오늘 하루 보지 않기</span></label>
+      <button type="button" id="popupClose">닫기</button>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="header" id="header">
+  <div class="header-inner">
+    <a href="#" class="logo" aria-label="홈">
+      <span class="logo-txt">
+        <span class="logo-ko" id="logoKo">용인 기흥 라온프라이빗 아르디에</span>
+        <span class="logo-en" id="logoEn">SONGDO GRANTERRE</span>
+      </span>
+    </a>
+    <nav class="gnav" id="gnav" aria-label="주 메뉴"></nav>
+    <button class="mobile-menu-btn" id="menuBtn" aria-label="메뉴 열기"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- MOBILE NAV -->
+<nav class="mobile-nav" id="mobileNav" aria-label="모바일 메뉴">
+  <button class="mobile-nav-close" id="navClose" aria-label="메뉴 닫기">✕</button>
+  <div id="mobileNavLinks"></div>
+</nav>
+<div class="nav-overlay" id="navOverlay"></div>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge"><span class="hero-badge-dot"></span><span id="heroBadge"></span></div>
+    <span class="hero-eyebrow" id="heroBrand"></span>
+    <h1 class="hero-title" id="heroTitle"></h1>
+    <p class="hero-sub" id="heroSub"></p>
+    <p class="hero-info" id="heroInfo"></p>
+    <div class="hero-cta-row">
+      <a href="#register" class="hero-btn hero-btn-primary">관심고객등록</a>
+      <a href="#overview" class="hero-btn hero-btn-outline">사업개요</a>
+    </div>
+  </div>
+  <div class="hero-scroll"><div class="hero-scroll-line"></div><span class="hero-scroll-txt">SCROLL</span></div>
+</section>
+
+<!-- NOTICE -->
+<div class="notice-bar" id="noticeBar"></div>
+
+<!-- IMAGE SECTIONS (config에서 렌더링) -->
+<main id="sections"></main>
+
+<!-- INTEREST FORM -->
+<section class="form-section" id="register">
+  <div class="container">
+    <div class="sec-head fade-in">
+      <span class="sec-eyebrow">INTEREST REGISTRATION</span>
+      <h2 class="sec-title">방문예약</h2>
+      <p class="sec-desc" style="margin-top:14px">등록하신 고객님께 사전 혜택 및 최신 분양정보를 <strong>가장 먼저</strong> 안내해 드립니다.</p>
+    </div>
+    <div class="form-box fade-in" id="formBox">
+      <form id="contactForm" novalidate>
+        <div class="form-group">
+          <label class="form-label" for="from_name">성함 <span>*</span></label>
+          <input class="form-input" type="text" id="from_name" name="from_name" placeholder="홍길동" autocomplete="name" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="phone">연락처 <span>*</span></label>
+          <input class="form-input" type="tel" id="phone" name="phone" placeholder="010-0000-0000" autocomplete="tel" inputmode="numeric" required>
+        </div>
+        <div class="form-group">
+  <div class="form-row">
+    <div class="form-col">
+      <label class="form-label" for="visit_date" id="visitDateLabel">방문예약 날짜</label>
+      <input class="form-input form-date" type="date" id="visit_date" name="visit_date">
+    </div>
+    <div class="form-col">
+      <label class="form-label" for="visit_time" id="visitTimeLabel">방문예약 시간</label>
+      <select class="form-select" id="visit_time" name="visit_time"><option value="미선택">시간 선택</option></select>
+    </div>
+  </div>
+  <p class="form-help" id="visitHelp"></p>
+</div>
+        <div class="privacy-wrap">
+          <label class="privacy-row">
+            <input type="checkbox" id="privacyAgree">
+            <span class="privacy-label"><strong>[필수]</strong> 개인정보 수집·이용에 동의합니다.
+              <button type="button" class="privacy-toggle" id="privacyToggle">내용보기 ▾</button>
+            </span>
+          </label>
+          <p class="privacy-error" id="privacyError">개인정보 수집·이용에 동의해 주세요.</p>
+          <div class="privacy-box" id="privacyBox">
+            <strong>개인정보 수집·이용 안내</strong>
+            <table>
+              <tr><th>수집 항목</th><td>성명, 연락처, 방문예약 희망일시</td></tr>
+              <tr><th>수집 목적</th><td id="privacyPurpose"></td></tr>
+              <tr><th>보유 기간</th><td>수집일로부터 1년 (목적 달성 또는 동의 철회 시 즉시 파기)</td></tr>
+              <tr><th>제3자 제공</th><td>제공하지 않음</td></tr>
+            </table>
+            <p style="margin-top:9px;color:#999">※ 동의를 거부할 권리가 있으나, 거부 시 상담 서비스 제공이 제한됩니다.</p>
+          </div>
+        </div>
+        <button type="submit" class="form-submit" id="submitBtn">관심고객 등록하기</button>
+        <p class="form-notice">수집된 개인정보는 분양 상담 안내 목적으로만 사용되며 관련 법령에 따라 보호됩니다.</p>
+      </form>
+    </div>
+    <div class="form-success" id="formSuccess">
+      <div class="form-success-icon">✅</div>
+      <h3>관심고객등록이 완료되었습니다!</h3>
+      <p id="successMsg"></p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo" id="footerLogo"></div>
+    <div class="footer-info" id="footerInfo"></div>
+    <p class="footer-disclaimer" id="footerDisclaimer"></p>
+    <p class="footer-copy" id="footerCopy"></p>
+  </div>
+</footer>
+
+<!-- FIXED BOTTOM CTA -->
+<div class="cta-bar" role="navigation" aria-label="빠른 연락">
+  <a href="#register" class="cta-btn cta-register" id="ctaRegister">
+    <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+    관심고객등록
+  </a>
+  <a href="#" class="cta-btn cta-tel" id="ctaTel">
+    <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+    전화걸기
+  </a>
+</div>
+
+<script src="config.js"></script>
+<script>
+(function(){
+  const cfg = SITE_CONFIG;
+  const telNum = cfg.callPhone.replace(/-/g,'');
+
+  /* =====================================================================
+     이미지 원본 크기표 — <img>에 width/height를 넣어 자리를 미리 예약한다.
+     (넣지 않으면 로딩 전 높이가 0이었다가 로딩 후 수천 px 늘어나면서
+      PC에서 앵커 이동 위치가 크게 어긋난다)
+     새 이미지를 추가하면 여기에 [가로, 세로]도 함께 등록하세요.
+     ===================================================================== */
+  const IMG_SIZE = {
+    'hero.jpg':          [1920, 1000],
+    'pc_overview.jpg':   [1200, 638],
+    'pc_location.jpg':   [1200, 3366],
+    'pc_premium.jpg':    [1200, 981],
+    'pc_block.jpg':      [1200, 1736],
+    'pc_plan.jpg':       [1200, 2862],
+    'pc_community.jpg':  [1200, 1285],
+    'pc_system.jpg':     [1200, 1044],
+    'unit_84a.jpg':  [1200, 2643], 'unit_84b.jpg':  [1200, 2245], 'unit_84c.jpg': [1200, 2288],
+    'unit_103a.jpg': [1200, 2354], 'unit_103b.jpg': [1200, 2190], 'unit_116.jpg': [1200, 2312],
+    'unit_119a.jpg': [1200, 2558], 'unit_119b.jpg': [1200, 2392],
+    'interior_84b.jpg':  [1200, 5766], 'interior_119a.jpg': [1200, 5766]
+  };
+  function imgTag(src, cls, alt){
+    const size = IMG_SIZE[String(src).split('/').pop()];
+    const dim = size ? ` width="${size[0]}" height="${size[1]}"` : '';
+    return `<img src="${src}"${dim} alt="${alt}" class="${cls}" loading="lazy" decoding="async">`;
+  }
+
+  /* ── SEO 동적 보강 ── */
+  if(cfg.seo){
+    document.title = cfg.seo.title;
+    document.querySelector('meta[name=description]').content = cfg.seo.description;
+    document.querySelector('meta[name=keywords]').content = cfg.seo.keywords;
+    if(cfg.seo.canonical){
+      document.getElementById('seo-canonical').href = cfg.seo.canonical;
+    }
+    document.getElementById('og-title').content = cfg.seo.title;
+    document.getElementById('tw-title').content = cfg.seo.title;
+    document.getElementById('og-desc').content = cfg.seo.description;
+    document.getElementById('tw-desc').content = cfg.seo.description;
+  }
+  document.getElementById('ld-json').textContent = JSON.stringify({
+    "@context":"https://schema.org","@type":"Residence",
+    "name":cfg.siteName,"description":cfg.seo?cfg.seo.description:"",
+    "address":{"@type":"PostalAddress","addressRegion":"경기도","addressLocality":"용인시 기흥구 영덕동","streetAddress":cfg.address},
+    "telephone":cfg.callPhone,"numberOfRooms":cfg.totalUnits
+  });
+
+  /* ── Header / Nav ── */
+  document.getElementById('logoKo').textContent = cfg.siteName;
+  document.getElementById('gnav').innerHTML =
+    cfg.nav.map(n=>`<a href="${n.href}">${n.label}</a>`).join('') +
+    `<a href="#register" class="gnav-cta">관심등록</a>`;
+  document.getElementById('mobileNavLinks').innerHTML =
+    cfg.nav.map(n=>`<a href="${n.href}" class="m-link">${n.label}</a>`).join('') +
+    `<a href="#register" class="m-link cta">관심고객등록</a>`;
+
+  /* ── Hero ── */
+  document.getElementById('heroBg').style.backgroundImage = `url('${cfg.heroImage}')`;
+  document.getElementById('heroBadge').textContent = cfg.heroBadge;
+  document.getElementById('heroBrand').textContent = cfg.brandEN;
+  document.getElementById('heroTitle').innerHTML = cfg.siteName.replace('라온프라이빗 아르디에','<b>라온프라이빗 아르디에</b>');
+  document.getElementById('heroSub').textContent = cfg.tagline;
+  document.getElementById('heroInfo').innerHTML =
+    `경기 용인시 기흥구 영덕동 · <b>총 ${Number(cfg.totalUnits).toLocaleString()}세대</b> · 84㎡~119㎡`;
+
+  /* ── Notice ── */
+  document.getElementById('noticeBar').innerHTML =
+    `견본주택 방문 상담 예약·문의 <strong>${cfg.callPhone}</strong> · ${cfg.openHours}`;
+
+  /* ── Sections ── */
+  const sec = document.getElementById('sections');
+  sec.innerHTML = cfg.sections.map((s,i)=>{
+    const tit = s.tit ? imgTag(s.tit, 'sec-tit-img fade-in', `${s.ko} 타이틀`) : '';
+    const imgs = (s.images||[]).map(src=>imgTag(src, 'sec-img fade-in', `${cfg.siteName} ${s.ko}`)).join('');
+
+    /* 사업개요 표 */
+    let table = '';
+    if(s.table && cfg.overviewTable){
+      table = `<table class="info-table fade-in"><tbody>` +
+        cfg.overviewTable.map(([th,td])=>`<tr><th>${th}</th><td>${td}</td></tr>`).join('') +
+        `</tbody></table>`;
+    }
+    /* 블록별 개요 표 (가로 스크롤) */
+    let bTable = '';
+    if(s.blockTable && cfg.blockTable){
+      const b = cfg.blockTable;
+      bTable = `<div class="block-table-wrap fade-in">
+        <div class="block-table-title">${b.title}</div>
+        <div class="block-scroll"><table class="block-table">
+          <thead><tr>${b.head.map(h=>`<th>${h}</th>`).join('')}</tr></thead>
+          <tbody>${b.rows.map(r=>`<tr><th>${r[0]}</th>${r.slice(1).map(c=>`<td>${c}</td>`).join('')}</tr>`).join('')}</tbody>
+        </table></div>
+        ${b.note?`<p class="block-note">${b.note}</p>`:''}
+      </div>`;
+    }
+
+    /* 1단 탭 (단지/동호수 배치도, 오피스텔 평면) */
+    let plans = '';
+    if(s.planTypes){
+      const tabs = s.planTypes.map((p,j)=>
+        `<button class="plan-tab${j===0?' active':''}" data-plan="${s.id}" data-idx="${j}">${p.label}</button>`).join('');
+      const panels = s.planTypes.map((p,j)=>
+        `<div class="plan-panel${j===0?' active':''}" id="${s.id}-panel-${j}">` +
+        p.images.map(src=>imgTag(src, 'sec-img', `${cfg.siteName} ${p.label}`)).join('') +
+        (p.block?`<span class="plan-block">${p.block}</span>`:'') +
+        `</div>`).join('');
+      plans = `<div class="plan-tabs fade-in">${tabs}</div>${panels}`;
+    }
+
+    /* 2단 탭 (아파트 평면 — 면적대 → 타입) */
+    let groups = '';
+    if(s.planGroups){
+      const gTabs = s.planGroups.map((g,gi)=>
+        `<button class="plan-tab${gi===0?' active':''}" data-group="${s.id}" data-gidx="${gi}">${g.label}</button>`).join('');
+      const gPanels = s.planGroups.map((g,gi)=>{
+        const tTabs = g.types.map((t,ti)=>
+          `<button class="plan-tab sub-tab${ti===0?' active':''}" data-plan="${s.id}-g${gi}" data-idx="${ti}">${t.label}</button>`).join('');
+        const tPanels = g.types.map((t,ti)=>
+          `<div class="plan-panel${ti===0?' active':''}" id="${s.id}-g${gi}-panel-${ti}">` +
+          t.images.map(src=>imgTag(src, 'sec-img', `${cfg.siteName} ${t.label} 평면도`)).join('') +
+          (t.block?`<span class="plan-block">${t.block}</span>`:'') +
+          `</div>`).join('');
+        return `<div class="plan-panel${gi===0?' active':''}" id="${s.id}-panel-${gi}" data-planwrap="${s.id}-g${gi}">
+          <div class="plan-tabs sub">${tTabs}</div>${tPanels}
+        </div>`;
+      }).join('');
+      groups = `<div class="plan-tabs fade-in">${gTabs}</div>${gPanels}`;
+    }
+
+    return `<section class="sec${i%2? ' alt':''}" id="${s.id}">
+      <div class="container">
+        <div class="sec-head fade-in">
+          <span class="sec-eyebrow">${s.en}</span>
+          <h2 class="sec-title">${s.ko}</h2>
+          ${s.desc?`<p class="sec-desc">${s.desc}</p>`:''}
+        </div>
+        ${tit}${table}${bTable}${plans}${groups}${imgs}
+      </div>
+    </section>`;
+  }).join('');
+
+  /* 탭 전환 — 1단(data-plan) / 2단 그룹(data-group) 공용 */
+  sec.addEventListener('click', e=>{
+    const t = e.target.closest('.plan-tab'); if(!t) return;
+
+    if(t.dataset.group !== undefined && t.dataset.gidx !== undefined){
+      const id = t.dataset.group, idx = t.dataset.gidx;
+      document.querySelectorAll(`.plan-tab[data-group="${id}"]`).forEach(b=>b.classList.remove('active'));
+      document.querySelectorAll(`#${CSS.escape(id)} > .container > .plan-panel`).forEach(p=>p.classList.remove('active'));
+      t.classList.add('active');
+      document.getElementById(`${id}-panel-${idx}`).classList.add('active');
+      return;
+    }
+    const id = t.dataset.plan, idx = t.dataset.idx;
+    if(id === undefined) return;
+    document.querySelectorAll(`.plan-tab[data-plan="${id}"]`).forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll(`[id^="${id}-panel-"]`).forEach(p=>p.classList.remove('active'));
+    t.classList.add('active');
+    document.getElementById(`${id}-panel-${idx}`).classList.add('active');
+  });
+
+  /* ── 방문예약 날짜 ── */
+  const vb = cfg.visitBooking || {};
+  const visitInput = document.getElementById('visit_date');
+  const ymd = d => `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+  const today = new Date();
+  const maxDate = new Date(today.getTime() + (vb.maxDaysAhead || 90)*86400000);
+  visitInput.min = ymd(today);
+  visitInput.max = ymd(maxDate);
+  document.getElementById('visitDateLabel').textContent = vb.dateLabel || '방문예약 날짜';
+  document.getElementById('visitTimeLabel').textContent = vb.timeLabel || '방문예약 시간';
+  const timeSel = document.getElementById('visit_time');
+  (vb.times || []).forEach(t=>{ const o=document.createElement('option'); o.value=o.textContent=t; timeSel.appendChild(o); });
+  document.getElementById('visitHelp').textContent  = vb.help  || '';
+
+  /* ── Form / footer text ── */
+  document.getElementById('privacyPurpose').textContent = cfg.privacyPurpose;
+  document.getElementById('successMsg').innerHTML =
+    `빠른 시간 내 담당자가 연락드리겠습니다.<br>추가 문의는 <strong>${cfg.callPhone}</strong>으로 연락 주세요.`;
+  document.getElementById('footerLogo').textContent = cfg.siteName;
+  document.getElementById('footerInfo').innerHTML =
+    `<b>시행·시공</b> ${cfg.developer}<br><b>대지위치</b> ${cfg.address}<br><b>견본주택</b> ${cfg.modelHouse}<br><b>문의</b> ${cfg.callPhone}`;
+  document.getElementById('footerDisclaimer').textContent = cfg.footerDisclaimer;
+  document.getElementById('footerCopy').textContent = `© ${cfg.year} ${cfg.siteName}. All rights reserved.`;
+
+  /* ── Tel links ── */
+  document.getElementById('ctaTel').href = `tel:${telNum}`;
+
+  /* ── Hide loader ── */
+  window.addEventListener('load', ()=>{
+    const l=document.getElementById('page-loading'); l.classList.add('hide'); setTimeout(()=>l.remove(),450);
+  });
+  setTimeout(()=>{const l=document.getElementById('page-loading'); if(l){l.classList.add('hide');setTimeout(()=>l.remove(),450);}},1800);
+
+  /* ── Interactions ── */
+  const header=document.getElementById('header');
+  addEventListener('scroll',()=>header.style.background = scrollY>40?'rgba(17,28,51,.98)':'rgba(27,42,74,.96)',{passive:true});
+
+  const mNav=document.getElementById('mobileNav'), ov=document.getElementById('navOverlay');
+  const openNav=()=>{mNav.classList.add('open');ov.classList.add('show');document.body.style.overflow='hidden';};
+  const closeNav=()=>{mNav.classList.remove('open');ov.classList.remove('show');document.body.style.overflow='';};
+  document.getElementById('menuBtn').onclick=openNav;
+  document.getElementById('navClose').onclick=closeNav;
+  ov.onclick=closeNav;
+
+  /* =====================================================================
+     앵커 스크롤 — 고정 헤더 보정 + 이미지 지연 로딩에 따른 좌표 재계산
+     ===================================================================== */
+  function headerH(){ return header ? header.offsetHeight : 58; }
+  function syncHeaderVar(){ document.documentElement.style.setProperty('--hh', headerH()+'px'); }
+  syncHeaderVar();
+  addEventListener('resize', syncHeaderVar);
+
+  let scrollJob = null;
+  const cancelJob = () => { scrollJob = null; };
+  ['wheel','touchstart','keydown'].forEach(ev=>addEventListener(ev, cancelJob, {passive:true}));
+
+  function targetTop(el){
+    const max = Math.max(0, document.documentElement.scrollHeight - innerHeight);
+    const y = el.getBoundingClientRect().top + pageYOffset - headerH() - 8;
+    return Math.round(Math.min(Math.max(y, 0), max));
+  }
+  function scrollToEl(el, smooth){
+    if(!el) return;
+    const job = scrollJob = {last: targetTop(el)};
+    scrollTo({top: job.last, behavior: smooth ? 'smooth' : 'auto'});   // 즉시 1차 이동
+    const until = performance.now() + 1500;
+    const step = now => {
+      if(scrollJob !== job) return;             // 사용자가 직접 스크롤하면 중단
+      const t = targetTop(el);
+      if(t !== job.last){ job.last = t; scrollTo({top:t, behavior: smooth?'smooth':'auto'}); }
+      if(now < until) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+    setTimeout(()=>{                            // rAF가 멈춘 경우의 안전망 + 최종 보정
+      if(scrollJob !== job) return;
+      const f = targetTop(el);
+      if(Math.abs(pageYOffset - f) > 2) scrollTo({top:f, behavior:'auto'});
+      cancelJob();
+    }, 1600);
+  }
+  document.addEventListener('click', e=>{
+    const a = e.target.closest('a[href^="#"]');
+    if(!a) return;
+    const hash = a.getAttribute('href');
+    if(hash === '#' || hash.length < 2) return;
+    const el = document.getElementById(hash.slice(1));
+    if(!el) return;
+    e.preventDefault();
+    closeNav();
+    scrollToEl(el, true);
+    history.replaceState(null, '', hash);
+  });
+  function jumpToHash(){
+    if(!location.hash || location.hash.length < 2) return;
+    const el = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+    if(el) scrollToEl(el, false);
+  }
+  addEventListener('hashchange', jumpToHash);
+  addEventListener('load', ()=>{ syncHeaderVar(); jumpToHash(); });
+
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}}),{threshold:.12});
+  document.querySelectorAll('.fade-in').forEach(el=>io.observe(el));
+
+  document.getElementById('privacyToggle').addEventListener('click',()=>{
+    const box=document.getElementById('privacyBox'); const btn=document.getElementById('privacyToggle');
+    const open=box.classList.toggle('open'); btn.textContent=open?'내용닫기 ▴':'내용보기 ▾';
+  });
+  document.getElementById('privacyAgree').addEventListener('change',()=>{document.getElementById('privacyError').style.display='none';});
+
+  /* ── Submit ── */
+  const form=document.getElementById('contactForm'), formBox=document.getElementById('formBox'),
+        formSuccess=document.getElementById('formSuccess'), submitBtn=document.getElementById('submitBtn');
+  form.addEventListener('submit',async e=>{
+    e.preventDefault();
+    const name=document.getElementById('from_name').value.trim();
+    const phone=document.getElementById('phone').value.trim();
+    if(!name||!phone){alert('성함과 연락처는 필수 입력 항목입니다.');return;}
+    if(timeSel.value !== '미선택' && !visitInput.value){
+      alert('방문 시간을 선택하셨습니다. 방문 날짜도 함께 선택해 주세요.'); visitInput.focus(); return;
+    }
+    if(!document.getElementById('privacyAgree').checked){
+      const er=document.getElementById('privacyError'); er.style.display='block';
+      er.scrollIntoView({behavior:'smooth',block:'center'}); return;
+    }
+    submitBtn.disabled=true; submitBtn.textContent='전송 중...';
+    try{
+      const res=await fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({from_name:name,phone,visit_date:visitInput.value||'미선택',visit_time:timeSel.value||'미선택'})});
+      const data=await res.json();
+      if(data.success){ formBox.style.display='none'; formSuccess.style.display='block';
+        formSuccess.scrollIntoView({behavior:'smooth',block:'center'}); }
+      else throw new Error(data.error||'전송 실패');
+    }catch(err){
+      alert(`전송 중 오류가 발생했습니다.\n전화 상담 ${cfg.callPhone}으로 연락 주세요.\n(${err.message})`);
+      submitBtn.disabled=false; submitBtn.textContent='관심고객 등록하기';
+    }
+  });
+
+  /* ── 이미지 팝업 ── */
+  (function initPopup(){
+    const pc = cfg.popup || {};
+    const ov = document.getElementById('popupOverlay');
+    if(!pc.enabled || !pc.image){ ov.remove(); return; }
+
+    const KEY = 'ypraon_popup_hidden_until';
+    const until = Number(localStorage.getItem(KEY) || 0);
+    if(until > Date.now()){ ov.remove(); return; }
+
+    const img = document.getElementById('popupImg');
+    img.src = pc.image; img.alt = pc.alt || '';
+    const link = document.getElementById('popupLink');
+    if(pc.link) link.href = pc.link; else link.removeAttribute('href');
+
+    function close(){
+      if(document.getElementById('popupToday').checked)
+        localStorage.setItem(KEY, String(Date.now() + (pc.hideForHours || 24)*3600000));
+      ov.classList.remove('visible');
+      setTimeout(()=>ov.classList.remove('show'), 300);
+    }
+    document.getElementById('popupClose').addEventListener('click', close);
+    document.getElementById('popupCloseX').addEventListener('click', close);
+    link.addEventListener('click', ()=>{ if(pc.link) close(); });
+    ov.addEventListener('click', e=>{ if(e.target === ov) close(); });
+    document.addEventListener('keydown', e=>{ if(e.key === 'Escape' && ov.classList.contains('show')) close(); });
+
+    // rAF는 백그라운드 탭에서 멈추므로(팝업이 투명한 채로 화면을 덮는 문제) 강제 리플로우로 트랜지션을 시작합니다.
+    setTimeout(()=>{ ov.classList.add('show'); void ov.offsetWidth; ov.classList.add('visible'); }, 700);
+  })();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "name": "yongin-giheung-raon-ardie",
+  "version": "1.0.0",
+  "private": true,
+  "description": "용인 기흥 라온프라이빗 아르디에 모바일 랜딩 페이지",
+  "dependencies": {
+    "nodemailer": "^6.9.9"
+  },
+  "scripts": {
+    "dev": "vercel dev",
+    "start": "vercel dev"
+  }
+}
